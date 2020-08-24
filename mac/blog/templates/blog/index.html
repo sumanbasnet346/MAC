@@ -1,0 +1,28 @@
+{% extends 'blog/basic.html' %}
+{% block body %}
+<!--{% load static %}
+    <a href="{%static 'blog/mystatic.txt' %}">Click me</a> -->
+<div class="container mt-3">
+    <div class="row my-2">
+        {% for item in myposts %}
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">{{item.title}}</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="#">{{item.mainhead}}</a>
+                    </h3>
+                    <div class="mb-1 text-muted">{{item.pub_date}}</div>
+                    <p class="card-text mb-auto">{{item.cmainhead}}</p>
+                    <a href="blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src='/media/{{item.thumbnail}}' alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" data-holder-rendered="true">
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+    </div>
+    <div class="row-my-2">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endblock %}
